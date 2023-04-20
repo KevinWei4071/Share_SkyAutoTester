@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--这是第一种方式，利用drwable引用文件-->
+    <!--<item android:drawable="@drawable/btn_selector_shape1" android:state_pressed="true" />-->
+    <!--<item android:drawable="@drawable/btn_selector_shape2" android:state_pressed="false" />-->
+    <!--第二种方式如下-->
+    <item android:state_focused="false">
+        <shape android:shape="rectangle">
+            <!-- 圆角 -->
+            <!--<corners android:radius="5dp" />-->
+            <!--填充颜色为白色-->
+            <solid android:color="#A0A1A3" />
+        </shape>
+    </item>
+    <!--单击时是一个带圆角,白色背景,绿色边框的矩形-->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <!--圆角-->
+            <!--<corners android:radius="5dp" />-->
+            <!--填充颜色为橙色-->
+            <solid android:color="#FF7000" />
+        </shape>
+    </item>
+</selector>

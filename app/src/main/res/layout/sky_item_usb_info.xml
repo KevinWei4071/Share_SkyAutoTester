@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
+    android:id="@+id/item">
+    <!--里面有button等控件默认情况下listitem会失去焦点，
+    导致无法响应item的事件
+    添加这个descendantFocusability属性
+    使得viewgroup覆盖子类控件而直接获得焦点-->
+
+
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingTop="10dp"
+            android:id="@+id/upgrade_info"
+            android:layout_width="0dp"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

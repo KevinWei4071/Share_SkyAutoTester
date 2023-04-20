@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_content"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="你好"-->
+    <!--        android:textColor="#F30202"-->
+    <!--        android:textSize="30dp"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btn_afresh_test"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="#F30202"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_selector0"
+            android:text="重新测试" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="测试结果" />
+        <TextView
+            android:id="@+id/tv_test_result"
+            android:layout_width="0dp"
+            android:layout_weight="1.4"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="NG" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@color/dark_gray">
+        <ListView
+            android:id="@+id/listView_single_test_report"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

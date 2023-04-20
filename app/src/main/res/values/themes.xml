@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="Theme.SkyAutoTester" parent="@style/Theme.Leanback" />
+
+    <style name="Theme.SkyAutoTester.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.SkyAutoTester.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.SkyAutoTester.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

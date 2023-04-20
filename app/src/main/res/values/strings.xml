@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">SkyAutoTester</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="app_version">SkyTestAutomation V1.00.01</string>
+
+    <!-- 基本信息 -->
+    <string name="MACHINE_INFO">机芯机型</string>
+    <string name="SOFTWARE_VERSION">软件版本</string>
+    <string name="COOCAA_VERSION">主页版本</string>
+    <string name="PANEL_ID">屏体编号</string>
+
+    <!-- 更多信息 -->
+    <string name="MORE_INFO">更多信息</string>
+    <string name="WIFI_INFO">WIFI模块</string>
+
+    <!-- 测试报告 -->
+    <string name="TEST_REPORT">测试报告</string>
+
+    <!-- 一键测试 -->
+    <string name="TEST_ALL_MODULES">一键测试</string>
+
+    <!-- 版本升级 -->
+    <string name="UPGRADE_IMAGES">版本升级</string>
+
+    <!-- 应用安装 -->
+    <string name="INSTALL_APP">应用安装</string>
+
+    <!-- 应用卸载 -->
+    <string name="UNINSTALL_APP">应用卸载</string>
+
+    <!-- 清理空间 -->
+    <string name="SPACE_CLEAR">清理空间</string>
+
+    <!-- 本地媒体测试 -->
+    <string name="MEDIA_PLAYER_TEST">本地媒体测试</string>
+
+    <!-- 在线视频测试 -->
+    <string name="ONLINE_VIDEO_TEST">在线视频测试</string>
+
+    <!-- 通道切换测试 -->
+    <string name="SOURCE_CHANNEL_TEST">通道切换测试</string>
+
+    <!-- 音量调节测试 -->
+    <string name="VOLUME_CONTROL_TEST">音量调节测试</string>
+
+    <!-- 无线网络测试 -->
+    <string name="WIRELESS_NETWORK_TEST">无线网络测试</string>
+
+    <!-- 其他 -->
+    <string name="NULL">NULL</string>
+    <string name="GETTING">正在获取...</string>
+    <string name="INTERFACE_MISSING">该界面不存在！</string>
+</resources>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_gray"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MACHINE_INFO" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SOFTWARE_VERSION" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/COOCAA_VERSION" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/PANEL_ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/machine_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/NULL" />
+
+                <TextView
+                    android:id="@+id/software_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/NULL" />
+
+                <TextView
+                    android:id="@+id/coocaa_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/NULL" />
+
+                <TextView
+                    android:id="@+id/panel_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/NULL" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/light_gray"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:text="@string/MORE_INFO" />
+
+            <Button
+                android:id="@+id/test_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:clickable="true"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:text="@string/TEST_REPORT" />
+
+            <Button
+                android:id="@+id/test_all_modules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:text="@string/TEST_ALL_MODULES" />
+
+            <Button
+                android:id="@+id/version_upgrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:clickable="true"
+                android:text="@string/UPGRADE_IMAGES" />
+
+            <Button
+                android:id="@+id/install_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:text="@string/INSTALL_APP" />
+
+            <Button
+                android:id="@+id/uninstall_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:text="@string/UNINSTALL_APP" />
+
+            <Button
+                android:id="@+id/space_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:drawableTop="@drawable/setting"
+                android:drawablePadding="5dp"
+                android:background="@drawable/btn_selector0"
+                android:gravity="center"
+                android:text="@string/SPACE_CLEAR" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/light_gray"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@color/deep_gray"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/media_player_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/MEDIA_PLAYER_TEST"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_selector0"/>
+
+                <Button
+                    android:id="@+id/source_channel_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/SOURCE_CHANNEL_TEST"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_selector0"/>
+
+                <Button
+                    android:id="@+id/wifi_callback_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/WIRELESS_NETWORK_TEST"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_selector0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@color/deep_gray">
+
+                <TextView
+                    android:id="@+id/textview_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="功能暂不支持"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
