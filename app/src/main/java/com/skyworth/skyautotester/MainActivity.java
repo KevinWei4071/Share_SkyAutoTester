@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-        setSystemProperties();
+        initSystemProperties();
         initUI();
         startIntent();
     }
@@ -342,7 +342,7 @@ public class MainActivity extends AppCompatActivity {
      * @param
      * @return
      */
-    public static void setSystemProperties(){
+    public static void initSystemProperties(){
         SystemProperties.set(SkyAutoTestProp, "false");
         SystemProperties.set(wifiTestProperties, "0");
         SystemProperties.set(wifiTestStatusProp, "false");
