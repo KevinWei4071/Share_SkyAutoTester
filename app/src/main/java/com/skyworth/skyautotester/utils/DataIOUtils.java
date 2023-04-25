@@ -27,7 +27,12 @@ import java.util.regex.Pattern;
 public class DataIOUtils {
 
     private final static String TAG = "SkyAutoTest";
-    private final static String PERFIXPATH = "/data/SkyAutoTester/";
+
+    private static String PERFIXPATH = "/data/SkyAutoTester/";
+
+    public static String getPERFIXPATH() {
+        return PERFIXPATH;
+    }
 
 
     public static String F_L() {
@@ -43,6 +48,11 @@ public class DataIOUtils {
         File file = new File("/data/SkyAutoTester");
         if (file.exists()) {
             if (file.isDirectory()) {
+                try {
+                    Runtime.getRuntime().exec("chmod -R 777 /data/SkyAutoTester");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 Log.i(TAG, F_L() + "SkyAutoTester folder has already exist!!");
                 return true;
             }
@@ -70,12 +80,27 @@ public class DataIOUtils {
                 }
                 Log.i(TAG, F_L() + "SkyAutoTester folder created successfully");
             } else {
-                Log.i(TAG, F_L() + "SkyAutoTester folder not created ");
+                Log.i(TAG, F_L() + "SkyAutoTester folder created error ");
             }
 
         }
     }
 
+    /**
+     * 在/data/下删除SkyAutoTester文件夹
+     */
+    public static void cleanSkyAutoTester(File dir) {
+        if (dir == null || !dir.exists() || !dir.isDirectory())
+            return;
+
+        for (File file : dir.listFiles()) {
+            if (file.isFile())
+                file.delete(); // 删除所有文件
+            else if (file.isDirectory())
+                cleanSkyAutoTester(file); // 递规的方式删除文件夹
+        }
+        dir.delete();// 删除目录本身
+    }
     /**
      * 判断文件是否存在
      *
@@ -115,7 +140,7 @@ public class DataIOUtils {
                         createSkyAutoTester();
                     } catch (IOException e) {
                         Log.i(TAG, F_L() + "error - An exception occurs when creating a folder");
-                        e.printStackTrace();
+                        Log.i(TAG, F_L() + Log.getStackTraceString(e));
                         return null;
                     }
                 }
@@ -130,14 +155,14 @@ public class DataIOUtils {
             }
         } catch (FileNotFoundException e) {
             Log.i(TAG, F_L() + "FileNotFoundException");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
         } catch (IOException e) {
             Log.i(TAG, F_L() + "IOException");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         } catch (Exception e) {
             Log.i(TAG, F_L() + "Exception");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         } finally {
             if (buffReader != null) {
@@ -145,7 +170,7 @@ public class DataIOUtils {
                     buffReader.close();
                 } catch (IOException e) {
                     Log.i(TAG, F_L() + "error - An error occurred during BufferedReader closing");
-                    e.printStackTrace();
+                    Log.i(TAG, F_L() + Log.getStackTraceString(e));
                     return null;
                 }
             }
@@ -176,7 +201,7 @@ public class DataIOUtils {
         /**************** 对字符串进行处理 START  ****************/
         Map<String, List<String>> map = CommonSplitDataUtils(readDataByIO);
         if (null == map) {
-            Log.i(TAG, F_L() + "error-分割数据格式出现错误");
+            Log.i(TAG, F_L() + "error - 分割数据格式出现错误");
             return null;
         }
         try {
@@ -202,7 +227,7 @@ public class DataIOUtils {
             }
         } catch (Exception e) {
             Log.i(TAG, F_L() + "error");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         }
         /**************** 对字符串进行处理 END  ****************/
@@ -218,8 +243,7 @@ public class DataIOUtils {
      * @return
      */
     public static ArrayList<String> extractMessageByRegular(String msg) {
-        @SuppressWarnings("unchecked")
-        ArrayList<String> list = new ArrayList();
+        ArrayList<String> list = new ArrayList<String>();
         Pattern p = Pattern.compile("(\\[[^\\]]*\\])");
         Matcher m = p.matcher(msg);
         while (m.find()) {
@@ -285,7 +309,7 @@ public class DataIOUtils {
             }
         } catch (Exception e) {
             Log.i(TAG, F_L() + "error - 拆分数据通用工具异常，分析文本格式是否符合约定");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         }
         return null;
@@ -305,7 +329,7 @@ public class DataIOUtils {
             SplicingUpGradeInfoFromData(upGradeTotal, readDataByIO);
         } catch (Exception e) {
             Log.i(TAG, F_L() + "error");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         }
         return upGradeTotal;
@@ -324,7 +348,7 @@ public class DataIOUtils {
             map = CommonSplitDataUtils(readDataByIO);
         } catch (Exception e) {
             Log.i(TAG, F_L() + "error");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         }
         return map;
@@ -346,12 +370,13 @@ public class DataIOUtils {
             ArrayList<String> fileList = new ArrayList<>();
             File[] files = file.listFiles();
             for (int i = 0; i < files.length; i++) {
+                Log.i(TAG,"/data/SkyAutoTester/ 下有这个文件"+files[i].getName());
                 fileList.add(files[i].getName());
             }
             return fileList;
         } catch (Exception e) {
             Log.i(TAG, F_L() + "error");
-            e.printStackTrace();
+            Log.i(TAG, F_L() + Log.getStackTraceString(e));
             return null;
         }
     }

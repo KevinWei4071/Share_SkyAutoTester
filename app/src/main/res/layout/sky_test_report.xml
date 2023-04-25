@@ -28,6 +28,17 @@
                 android:layout_height="match_parent"
                 android:text="下载总测试报告" />
 
+            <Button
+                android:id="@+id/btn_show_pic"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:background="@drawable/btn_selector0"
+                android:layout_height="match_parent"
+                android:text="展示图片"
+                android:textSize="20dp"/>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="3"

@@ -59,4 +59,14 @@
     <string name="NULL">NULL</string>
     <string name="GETTING">正在获取...</string>
     <string name="INTERFACE_MISSING">该界面不存在！</string>
+    
+    <!--通道测试图片-->
+    <string name="CHANNEL_TEST_PIC_NULL">该通道暂无测试图片</string>
+    <string name="CHANNEL_TEST_PIC_AV">AV通道</string>
+    <string name="CHANNEL_TEST_PIC_HDMI1">HDMI1通道</string>
+    <string name="CHANNEL_TEST_PIC_HDMI2">HDMI2通道</string>
+    <string name="CHANNEL_TEST_PIC_HDMI3">HDMI3通道</string>
+    <string name="CHANNEL_TEST_PIC_HMDI4">HDMI4通道</string>
+    <string name="CHANNEL_TEST_PIC_VOD">VOD通道</string>
+
 </resources>

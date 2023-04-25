@@ -15,4 +15,12 @@ public class Defines {
     public final static String finishSourceTest = "com.skyworth.broadcast.source.module.FINISH";
     public final static String finishWifiTest = "com.skyworth.broadcast.wifi.module.FINISH";
 
+    /************************ 图片类型 START *******************************/
+    public final static String PIC_TYPE_AV = "AV";
+    public final static String PIC_TYPE_HDMI1 = "HDMI1";
+    public final static String PIC_TYPE_HDMI2 = "HDMI2";
+    public final static String PIC_TYPE_HDMI3 = "HDMI3";
+    public final static String PIC_TYPE_HDMI4 = "HDMI4";
+    public final static String PIC_TYPE_VOD = "VOD";
+    /************************ 图片类型 END *******************************/
 }

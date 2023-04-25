@@ -70,7 +70,7 @@ public class SkyTestService extends Service {
                 {
                     if("true".equals(wifiTestStatus))
                     {
-                        mHandler.sendEmptyMessageDelayed(WIFI_TEST, 3000);
+                        mHandler.sendEmptyMessageDelayed(WIFI_TEST, 30000);
                     } else if ("true".equals(upgradeTestFlag))
                     {
 

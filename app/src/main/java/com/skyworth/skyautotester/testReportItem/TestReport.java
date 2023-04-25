@@ -2,6 +2,7 @@ package com.skyworth.skyautotester.testReportItem;
 
 //import static com.skyworth.factory.utils.FactoryUtils.copyFile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.skyworth.skyautotester.R;
+import com.skyworth.skyautotester.activity.ReportSource;
 import com.skyworth.skyautotester.adapter.ReportAdapter;
+import com.skyworth.skyautotester.utils.CommonUtils;
+import com.skyworth.skyautotester.utils.ExcelUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -33,8 +37,12 @@ public class TestReport extends AppCompatActivity implements AdapterView.OnItemC
     private ReportAdapter adapter;
 
     Button btn_upload_total = null;
+    Button btn_show_pic = null;
 
     private final static String TAG = "SkyAutoTest";
+    public static String F_L() {
+        return CommonUtils.getInstance().getFUNCTION_LINE();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,10 @@ public class TestReport extends AppCompatActivity implements AdapterView.OnItemC
         btn_upload_total = findViewById(R.id.btn_upload_total);
         btn_upload_total.setSelected(true);
         btn_upload_total.setFocusable(true);
+
+        btn_show_pic=findViewById(R.id.btn_show_pic);
+        btn_show_pic.setSelected(true);
+        btn_show_pic.setFocusable(true);
 
         initView();
         initData();
@@ -55,8 +67,7 @@ public class TestReport extends AppCompatActivity implements AdapterView.OnItemC
             @Override
             public void onClick(View view){
                 try {
-                    //Toast.makeText(TestReport.this, "下载全部报告！！", Toast.LENGTH_LONG).show();
-                    String usbRootName = getUSBPath();
+                    /*String usbRootName = getUSBPath();
                     Log.i(TAG,"usbRootName = " + usbRootName);
                     if(usbRootName == null || usbRootName.equals("null"))
                     {
@@ -66,11 +77,38 @@ public class TestReport extends AppCompatActivity implements AdapterView.OnItemC
                         String newPath = usbRootName + "/test.txt";
                         //先判断该路径下有没有这个文件？（自动生成，文件名固定）
                         //copyFile(oldPath, newPath);     //复制单个文件
+                    }*/
+                    Log.i(TAG,F_L());
+                    ExcelUtils excelUtils = new ExcelUtils();
+                    Log.i(TAG,F_L());
+                    Boolean bool = excelUtils.createExcel();
+                    Log.i(TAG,F_L());
+                    if(bool){
+                        Toast.makeText(TestReport.this, "下载全部报告！！", Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(TestReport.this, "下载报告失败！！", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (Exception e) {
                     Toast.makeText(TestReport.this, "error！", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btn_show_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Runtime.getRuntime().exec("chmod -R 777 /data/SkyAutoTester/TvTest");
+                    Log.i(TAG,F_L()+"btn_show_pic.setOnClickListener");
+                    Intent showPicInten = new Intent();
+                    showPicInten.setClass(TestReport.this, ReportSource.class);
+                    startActivity(showPicInten);
+                } catch (Exception e) {
+                    Toast.makeText(TestReport.this, R.string.INTERFACE_MISSING, Toast.LENGTH_LONG).show();
+                    Log.i(TAG,F_L()+Log.getStackTraceString(e));
+                }
+
             }
         });
 

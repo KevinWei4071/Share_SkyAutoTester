@@ -4,6 +4,7 @@ import static com.skyworth.skyautotester.Defines.SkyAutoTestProp;
 import static com.skyworth.skyautotester.Defines.TAG_SkyAutoTest;
 import static com.skyworth.skyautotester.Defines.wifiTestProperties;
 import static com.skyworth.skyautotester.Defines.wifiTestStatusProp;
+import static com.skyworth.skyautotester.utils.DataIOUtils.cleanSkyAutoTester;
 import static com.skyworth.skyautotester.utils.DataIOUtils.createSkyAutoTester;
 
 import android.annotation.SuppressLint;
@@ -19,12 +20,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.skyworth.skyautotester.testReportItem.TestReport;
 import com.skyworth.skyautotester.activity.MoreInfoActivity;
 import com.skyworth.skyautotester.activity.UpgradeActivity;
 import com.skyworth.skyautotester.dialog.AlertDialogs;
 import com.skyworth.skyautotester.skyFactory.SkyFactoryManager;
+import com.skyworth.skyautotester.testReportItem.TestReport;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -157,12 +159,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onYesClick() {
                         //设置相关prop属性
                         SystemProperties.set(SkyAutoTestProp, "true");
-                        Toast.makeText(MainActivity.this,"开始本地媒体播放测试",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,"开始通道切换测试",Toast.LENGTH_LONG).show();
 
-                        Intent autoIntent = new Intent();
-                        autoIntent.setAction("com.skyworth.broadcast.mediaplay.module.START");
-                        autoIntent.setPackage("com.tianci.localmedia");
-                        sendBroadcast(autoIntent);
+                        Intent source_intent = new Intent("com.skyworth.tvtest.start");
+                        //source_intent.setComponent(componentSource);
+                        source_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//调用其他应用需要新增Flags
+                        startActivity(source_intent);
                         alertDialogs.dismiss();
                     }
                 });
@@ -196,7 +198,8 @@ public class MainActivity extends AppCompatActivity {
         install_app.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(MainActivity.this, "功能暂不支持", Toast.LENGTH_LONG).show();
+               //Toast.makeText(MainActivity.this, "功能暂不支持", Toast.LENGTH_LONG).show();
+                // installMyApk(MainActivity.this);
             }
         });
 
@@ -212,7 +215,26 @@ public class MainActivity extends AppCompatActivity {
         space_clear.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(MainActivity.this, "功能暂不支持", Toast.LENGTH_LONG).show();
+                alertDialogs = new AlertDialogs(MainActivity.this);
+                alertDialogs.setTitle("提示");
+                alertDialogs.setMessage("确定清除所有测试结果文件?");
+                alertDialogs.setYesOnclickListener("确定", new AlertDialogs.onYesOnclickListener() {
+                    @Override
+                    public void onYesClick() {
+                        Toast.makeText(MainActivity.this,"清除完成",Toast.LENGTH_LONG).show();
+                        File file = new File("/data/SkyAutoTester");
+                        cleanSkyAutoTester(file);
+                        alertDialogs.dismiss();
+                    }
+                });
+                alertDialogs.setNoOnclickListener("取消", new AlertDialogs.onNoOnclickListener() {
+                    @Override
+                    public void onNoClick() {
+                        Toast.makeText(MainActivity.this,"已取消",Toast.LENGTH_LONG).show();
+                        alertDialogs.dismiss();
+                    }
+                });
+                alertDialogs.show();
             }
         });
 
@@ -257,10 +279,18 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onYesClick() {
                         Toast.makeText(MainActivity.this,"开始通道切换测试",Toast.LENGTH_LONG).show();
-                        Intent sourceIntent = new Intent();
-                        sourceIntent.setAction("com.skyworth.broadcast.source.module.START");//通过广播通知其他应用
-                        sourceIntent.setPackage("com.tianci.source");
-                        sendBroadcast(sourceIntent);
+                        try {
+                            //String packageSource = "com.skyworth.tvtest";
+                            //String ActivitySource = "com.skyworth.tvtest.start";
+                            //ComponentName componentSource = new ComponentName(packageSource, ActivitySource);
+                            //这里Intent传值
+                            Intent source_intent = new Intent("com.skyworth.tvtest.start");
+                            //source_intent.setComponent(componentSource);
+                            source_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//调用其他应用需要新增Flags
+                            startActivity(source_intent);
+                        } catch (Exception e) {
+                            Log.e(TAG,"start source Activity error is " + e);
+                        }
                         alertDialogs.dismiss();
                     }
                 });
@@ -343,9 +373,9 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     public static void initSystemProperties(){
-        SystemProperties.set(SkyAutoTestProp, "false");
-        SystemProperties.set(wifiTestProperties, "0");
-        SystemProperties.set(wifiTestStatusProp, "false");
+        SystemProperties.set(SkyAutoTestProp, "-1");
+        SystemProperties.set(wifiTestProperties, "-1");
+        SystemProperties.set(wifiTestStatusProp, "-1");
     }
 
 }

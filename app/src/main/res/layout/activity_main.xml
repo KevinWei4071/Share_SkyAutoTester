@@ -143,6 +143,7 @@
                 android:drawablePadding="5dp"
                 android:background="@drawable/btn_selector0"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/INSTALL_APP" />
 
             <Button
@@ -154,6 +155,7 @@
                 android:drawablePadding="5dp"
                 android:background="@drawable/btn_selector0"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/UNINSTALL_APP" />
 
             <Button
@@ -239,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="功能暂不支持"/>
+                    android:text="测试项目介绍"/>
             </LinearLayout>
 
         </LinearLayout>
